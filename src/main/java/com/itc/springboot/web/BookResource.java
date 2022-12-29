@@ -35,7 +35,7 @@ public class BookResource {
     @PostMapping("/book")
     public ResponseEntity<Void> createNewBook(@RequestBody BookCreateDTO dto) {
         bookService.createNewBook(dto);
-        return ResponseEntity.created(URI.create("/book ")).build();
+        return ResponseEntity.created(URI.create("/book")).build();
     }
 
     @GetMapping("/book")
@@ -47,6 +47,12 @@ public class BookResource {
     public ResponseEntity<Void> updateBook(@PathVariable("bookId") Long bookId,
                                            @RequestBody BookUpdateRequestDTO dto) {
         bookService.updateBook(bookId, dto);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/book/{bookId}")
+    public ResponseEntity<Void> deleteBook(@PathVariable("bookId") Long bookId) {
+        bookService.deleteBook(bookId);
         return ResponseEntity.ok().build();
     }
 }
