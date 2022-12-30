@@ -20,7 +20,8 @@ public class AppConfig {
         return new Author(
                 1L,
                 "Fiersa Besari",
-                null);
+                null,
+                false);
     }
 
     @Bean
