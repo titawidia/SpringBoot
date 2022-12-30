@@ -8,6 +8,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Data
@@ -18,7 +19,7 @@ import java.time.LocalDate;
 //@DynamicUpdate
 @SQLDelete(sql = "UPDATE author SET deleted = true WHERE id = ?")
 @Where(clause = "deleted=false")
-public class Author {
+public class Author implements Serializable {
 
     //postgres -> bigserial
     //mysql -> autoincrement
