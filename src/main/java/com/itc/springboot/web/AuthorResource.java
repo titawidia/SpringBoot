@@ -2,6 +2,7 @@ package com.itc.springboot.web;
 
 import com.itc.springboot.dto.AuthorCreateRequestDTO;
 import com.itc.springboot.dto.AuthorResponseDTO;
+import com.itc.springboot.dto.AuthorUpdateRequestDTO;
 import com.itc.springboot.service.AuthorService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -26,5 +27,12 @@ public class AuthorResource {
     public ResponseEntity<Void> createNewAuthor(@RequestBody @Valid AuthorCreateRequestDTO dto) {
         authorService.createNewAuthor(dto);
         return ResponseEntity.created(URI.create("/author")).build();
+    }
+
+    @PutMapping("/author/{authorId}")
+    public ResponseEntity<Void> updateAuthor(@PathVariable Long authorId,
+                                             @RequestBody AuthorUpdateRequestDTO dto) {
+        authorService.updateAuthor(authorId, dto);
+        return ResponseEntity.ok().build();
     }
 }
